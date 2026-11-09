@@ -1,0 +1,1 @@
+export { AISettingsScreen as default } from "../../../src/features/ai";

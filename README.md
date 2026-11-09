@@ -45,7 +45,7 @@ In an era of streaming, Msick brings the power of AI to your **local files**.
 
 ### 🤖 AI-Driven Multi-Genre Classification
 - Automatically organizes your library into **20 curated genres** (e.g., Phonk, Lo-fi, Bollywood, Metal).
-- Powered by **Groq API (Llama 3.3 70B)** for human-like understanding of filenames.
+- Powered by optional Groq AI for human-like understanding of filenames. Configure the key on-device in **Features → AI Settings**.
 - Intelligent fallback to a local keyword-based classifier when offline.
 
 ### 🔍 AI Smart Filter (Natural Language Search)
@@ -71,10 +71,18 @@ In an era of streaming, Msick brings the power of AI to your **local files**.
 - **Framework:** React Native & Expo (Development Build)
 - **Navigation:** Expo Router (Type-safe Tabs Architecture)
 - **Database:** SQLite (`expo-sqlite`)
-- **AI Engine:** Groq API / Llama 3.x
+- **AI Engine:** Optional Groq API / GPT OSS models
 - **Styling:** TailwindCSS (`NativeWind v4`)
 - **Animations:** `React Native Reanimated`
 - **Metadata Parsing:** `music-metadata-browser`
+
+## Security
+
+**Credential Cleanup**
+- The Groq API key that was accidentally exposed has been removed from source code and `.env`.
+- Revoke the exposed key in the Groq console and generate a new one if needed.
+- Store the key securely using `expo-secure-store`; reference via `EXPO_PUBLIC_GROQ_API_KEY` placeholder in `.env.example`.
+- Ensure `.env` files are ignored via `.gitignore`.
 
 ## 🏁 Getting Started
 
@@ -84,7 +92,7 @@ Msick uses custom native modules. It must run as an **Expo Development Build**.
 
 - [Node.js](https://nodejs.org/) (LTS)
 - Android Studio (for Emulator) or a physical Android device.
-- Groq API Key ([console.groq.com](https://console.groq.com/))
+- Groq API Key ([console.groq.com](https://console.groq.com/)) — optional, only needed for AI-assisted features.
 
 ### Installation
 
@@ -99,12 +107,6 @@ Msick uses custom native modules. It must run as an **Expo Development Build**.
    npm install
    ```
 
-3. **Environment Setup:**
-   Create a `.env` file in the root:
-   ```env
-   EXPO_PUBLIC_GROQ_API_KEY=your_actual_key_here
-   ```
-
 ### Running the App
 
 1. **Build the Development Client:**
@@ -116,6 +118,8 @@ Msick uses custom native modules. It must run as an **Expo Development Build**.
    ```bash
    npm start
    ```
+
+3. **Optional AI setup:** Open **Features → AI Settings**, enter your Groq key, choose a model, and save it securely on the device. Do not put private API keys in `EXPO_PUBLIC_` variables or source files.
 
 ## 🗺️ Roadmap
 

@@ -9,11 +9,11 @@ import {
     View,
 } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { useGenre } from "../../../context/GenreContext";
+import { useGenre } from "../../../src/features/genres";
 
 export default function FeaturesScreen() {
     const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const { startClassification, status, hasClassified, resetClassification } = useGenre();
+    const { startClassification, status, hasClassified } = useGenre();
 
     const handleGenrePress = () => {
         if (hasClassified) {
@@ -55,6 +55,30 @@ export default function FeaturesScreen() {
             </View>
 
             <View className="flex-1 px-5">
+                <TouchableOpacity
+                    onPress={() => router.push("/features/ai-settings" as any)}
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: 16,
+                        padding: 20,
+                        borderRadius: 20,
+                        backgroundColor: "rgba(25, 4, 25, 0.85)",
+                        borderWidth: 1,
+                        borderColor: "rgba(127, 25, 230, 0.25)",
+                        marginBottom: 12,
+                    }}
+                >
+                    <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: "rgba(127, 25, 230, 0.2)", justifyContent: "center", alignItems: "center" }}>
+                        <FontAwesome name="key" size={20} color="#c084fc" />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        <Text style={{ fontWeight: "700", fontSize: 16, color: "#ffffff" }}>AI Settings</Text>
+                        <Text style={{ color: "rgba(255, 255, 255, 0.4)", fontSize: 13, marginTop: 2 }}>Configure Groq and your model</Text>
+                    </View>
+                    <FontAwesome name="chevron-right" size={14} color="rgba(255, 255, 255, 0.3)" />
+                </TouchableOpacity>
+
                 {/* Share Music Card */}
                 <TouchableOpacity
                     onPress={() => router.push("/features/share-music")}

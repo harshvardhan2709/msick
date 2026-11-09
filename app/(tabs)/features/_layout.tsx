@@ -7,6 +7,7 @@ export default function FeaturesLayout() {
             <Stack.Screen name="share-music" options={{ title: 'Share', headerShown: false }} />
             <Stack.Screen name="genre-classification" options={{ title: 'Genre', headerShown: false }} />
             <Stack.Screen name="ai-filter" options={{ title: 'Smart Filter', headerShown: false }} />
+            <Stack.Screen name="ai-settings" options={{ title: 'AI Settings', headerShown: false }} />
         </Stack>
     );
 }
